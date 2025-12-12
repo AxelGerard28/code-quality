@@ -25,7 +25,6 @@ class Yatzy
         return $total;
     }
 
-    //Pas très compréhensible.
 
     /**
      * @param array<int, int> $dice
@@ -44,126 +43,12 @@ class Yatzy
         return 0;
     }
 
-    //Trop de conditions.
-    //Pourquoi faire six fonctions pour le nombre de certaines valeurs ?
-    //Pourquoi vérifications que de 1, 2 et 3 sous cette forme de cinq conditions alors que 4, 5 et 6 sont sous formes de boucle ?
-
-
-    public static function ones(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public function scoreSpecificValue(int $targetValue): int
     {
         $sum = 0;
-        if ($d1 === 1) {
-            ++$sum;
-        }
-        if ($d2 === 1) {
-            ++$sum;
-        }
-        if ($d3 === 1) {
-            ++$sum;
-        }
-        if ($d4 === 1) {
-            ++$sum;
-        }
-        if ($d5 === 1) {
-            ++$sum;
-        }
-
-        return $sum;
-    }
-
-    public static function twos(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $sum = 0;
-        if ($d1 === 2) {
-            $sum += 2;
-        }
-        if ($d2 === 2) {
-            $sum += 2;
-        }
-        if ($d3 === 2) {
-            $sum += 2;
-        }
-        if ($d4 === 2) {
-            $sum += 2;
-        }
-        if ($d5 === 2) {
-            $sum += 2;
-        }
-
-        return $sum;
-    }
-
-    public static function threes(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $s = 0;
-        if ($d1 === 3) {
-            $s += 3;
-        }
-        if ($d2 === 3) {
-            $s += 3;
-        }
-        if ($d3 === 3) {
-            $s += 3;
-        }
-        if ($d4 === 3) {
-            $s += 3;
-        }
-        if ($d5 === 3) {
-            $s += 3;
-        }
-
-        return $s;
-    }
-
-    //La condition devrait être $at < 5.
-
-    public function fours(): int
-    {
-        $sum = 0;
-        for ($at = 0; $at !== 5; $at++) {
-            if ($this->dice[$at] === 4) {
-                $sum += 4;
-            }
-        }
-        return $sum;
-    }
-
-    //Pourquoi utiliser $i et pas $at comme précédemment ?
-    //Nom de fonction non conventionnel.
-    //Definition de la variable $i inutile.
-
-    public function Fives(): int
-    {
-        $s = 0;
-        $i = 0;
-        for ($i = 0; $i < 5; $i++) {
-            if ($this->dice[$i] === 5) {
-                $s = $s + 5;
-            }
-        }
-        return $s;
-    }
-
-    //Il faut incrémenter $sum de 1, non pas de 6.
-    public function sixes(): int
-    {
-        $sum = 0;
-        for ($at = 0; $at < 5; $at++) {
-            if ($this->dice[$at] === 6) {
-                $sum = $sum + 6;
-            }
-        }
-        return $sum;
-    }
-
-    //Mais pourquoi faire ?
-    //La fonction est inutile étant donné que les dés ne peuvent pas être égaux à 7.
-    public function sevens(): int
-    {
-        $sum = 0;
-        for ($at = 0; $at < 5; $at++) {
-            if ($this->dice[$at] === 7) {
-                $sum = $sum + 7;
+        foreach ($this->dice as $die) {
+            if ($die === $targetValue) {
+                $sum += $targetValue;
             }
         }
         return $sum;
@@ -172,7 +57,7 @@ class Yatzy
     //Nom de fonction non conventionnel.
     //Les fonctions sont redondantes : possibilité de regrouper en une seule fonction pour éviter des répétitions notamment de création de tableaux
 
-    public function score_pair(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $counts = array_fill(0, 6, 0);
         ++$counts[$d1 - 1];
@@ -188,7 +73,7 @@ class Yatzy
         return 0;
     }
 
-    public static function two_pair(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function twoPair(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $counts = array_fill(0, 6, 0);
         ++$counts[$d1 - 1];
@@ -212,7 +97,7 @@ class Yatzy
         return 0;
     }
 
-    public static function three_of_a_kind(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $t = array_fill(0, 6, 0);
         ++$t[$d1 - 1];
