@@ -50,23 +50,6 @@ class Yatzy
         return 0;
     }
 
-    //Pourquoi sous forme de commentaire/pourquoi le laisser puisque cela ne fonctionne point.
-
-    /*public static function oldYatzyScore(array $dice): int
-    {
-        // Etait buggé...
-        $counts = array_fill(0, 5, 0);
-        foreach ($dice as $die) {
-            ++$counts[$die - 1];
-        }
-        foreach (range(0, count($counts) - 1) as $i) {
-            if ($counts[$i] === 5) {
-                return 50;
-            }
-        }
-        return 0;
-    }*/
-
     //Trop de conditions.
     //Pourquoi faire six fonctions pour le nombre de certaines valeurs ?
     //Pourquoi vérifications que de 1, 2 et 3 sous cette forme de cinq conditions alors que 4, 5 et 6 sont sous formes de boucle ?
