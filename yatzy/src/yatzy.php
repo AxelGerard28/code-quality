@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Yatzy;
 
+//Nom de classe non valide.
 class yatzy
 {
     /**
      * @var array<int, int>
      */
     private array $dice;
-//incohérence nommage paramètre : $d1/$d2/$d3/$d4/ pourquoi $_5 ?
+//Incohérence nommage paramètre : $d1/$d2/$d3/$d4/ pourquoi $_5 ?
     public function __construct(int $d1, int $d2, int $d3, int $d4, int $_5)
     {
         $this->dice = array_fill(0, 5, 0);
@@ -20,7 +21,7 @@ class yatzy
         $this->dice[3] = $d4;
         $this->dice[4] = $_5;
     }
-//redondance des ajouts, faisable en une seule ligne
+//Redondance des ajouts, faisable en une seule ligne.
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $total = 0;
@@ -31,6 +32,8 @@ class yatzy
         $total += $d5;
         return $total;
     }
+
+    //Pas très compréhensible.
 
     /**
      * @param array<int, int> $dice
@@ -49,6 +52,8 @@ class yatzy
         return 0;
     }
 
+    //Pourquoi sous forme de commentaire/pourquoi le laisser puisque cela ne fonctionne point.
+
     /*public static function oldYatzyScore(array $dice): int
     {
         // Etait buggé...
@@ -63,6 +68,11 @@ class yatzy
         }
         return 0;
     }*/
+
+    //Trop de conditions.
+    //Pourquoi faire six fonctions pour le nombre de certaines valeurs ?
+    //Pourquoi vérifications que de 1, 2 et 3 sous cette forme de cinq conditions alors que 4, 5 et 6 sont sous formes de boucle ?
+
 
     public static function ones(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
@@ -130,6 +140,8 @@ class yatzy
         return $s;
     }
 
+    //La condition devrait être $at < 5.
+
     public function fours(): int
     {
         $sum = 0;
@@ -140,6 +152,10 @@ class yatzy
         }
         return $sum;
     }
+
+    //Pourquoi utiliser $i et pas $at comme précédemment ?
+    //Nom de fonction non conventionnel.
+    //Definition de la variable $i inutile.
 
     public function Fives(): int
     {
@@ -153,6 +169,7 @@ class yatzy
         return $s;
     }
 
+    //Il faut incrémenter $sum de 1, non pas de 6.
     public function sixes(): int
     {
         $sum = 0;
@@ -164,6 +181,8 @@ class yatzy
         return $sum;
     }
 
+    //Mais pourquoi faire ?
+    //La fonction est inutile étant donné que les dés ne peuvent pas être égaux à 7.
     public function sevens(): int
     {
         $sum = 0;
@@ -174,6 +193,9 @@ class yatzy
         }
         return $sum;
     }
+
+    //Nom de fonction non conventionnel.
+    //Les fonctions sont redondantes : possibilité de regrouper en une seule fonction pour éviter des répétitions notamment de création de tableaux
 
     public function score_pair(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
@@ -267,6 +289,7 @@ class yatzy
         return 0;
     }
 
+    //Variables $i et $tallies inutilisées.
     public static function fullHouse(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $tallies = [];
