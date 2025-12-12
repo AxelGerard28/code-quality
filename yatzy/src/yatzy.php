@@ -10,7 +10,7 @@ class yatzy
      * @var array<int, int>
      */
     private array $dice;
-
+//incohérence nommage paramètre : $d1/$d2/$d3/$d4/ pourquoi $_5 ?
     public function __construct(int $d1, int $d2, int $d3, int $d4, int $_5)
     {
         $this->dice = array_fill(0, 5, 0);
@@ -20,7 +20,7 @@ class yatzy
         $this->dice[3] = $d4;
         $this->dice[4] = $_5;
     }
-
+//redondance des ajouts, faisable en une seule ligne
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $total = 0;
